@@ -1,0 +1,196 @@
+/* --- CONFIGURAÇÕES GERAIS E VARIÁVEIS --- */
+:root {
+    --primary-color: #2e7d32; /* Verde Agrinho */
+    --primary-light: #4caf50;
+    --secondary-color: #8d6e63; /* Tom de Terra */
+    --dark-color: #1b5e20;
+    --text-color: #333333;
+    --bg-light: #f4f9f4;
+    --white: #ffffff;
+    --transition: all 0.3s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--white);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.text-center { text-align: center; }
+.subtitle {
+    display: block;
+    color: var(--secondary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--dark-color);
+    margin-bottom: 40px;
+}
+
+/* --- LAYOUT GRIDS --- */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+/* --- BOTÕES --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+.btn-primary { background-color: var(--primary-color); color: var(--white); }
+.btn-primary:hover { background-color: var(--dark-color); transform: translateY(-3px); }
+.btn-secondary { background-color: transparent; color: var(--white); border: 2px solid var(--white); }
+.btn-secondary:hover { background-color: var(--white); color: var(--primary-color); }
+
+/* --- HEADER & NAV --- */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+.logo small { color: var(--secondary-color); font-size: 1.1rem; }
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-color);
+    margin-left: 25px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+.nav-menu a:hover, .nav-menu a.active { color: var(--primary-color); }
+.menu-toggle { display: none; font-size: 1.5rem; color: var(--primary-color); cursor: pointer; }
+
+/* --- HERO SECTION --- */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    padding-top: 80px;
+}
+.hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; }
+.hero-content p { font-size: 1.2rem; max-width: 600px; margin-bottom: 30px; }
+.hero-buttons .btn { margin-right: 15px; }
+
+/* --- SOBRE --- */
+.sobre-img-placeholder {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    height: 350px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.main-icon { font-size: 6rem; color: var(--white); }
+
+/* --- CARDS (PILARES) --- */
+.bg-light { background-color: var(--bg-light); }
+.card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    text-align: center;
+}
+.card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.card-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; }
+.card h3 { margin-bottom: 15px; color: #222; }
+
+/* --- ESTATÍSTICAS --- */
+.stats-container { background: var(--bg-light); padding: 40px; border-radius: 15px; text-align: center; }
+.stat-item h3 { font-size: 3rem; color: var(--primary-color); margin-bottom: 5px; }
+.stat-item p { font-weight: 600; color: var(--secondary-color); }
+
+/* --- CONTATO & FOOTER --- */
+.bg-dark { background-color: #113214; color: var(--white); }
+.bg-dark h2 { color: var(--white); }
+.info-item { display: flex; align-items: center; margin-top: 20px; font-size: 1.1rem; }
+.info-item i { margin-right: 15px; color: var(--primary-light); font-size: 1.3rem; }
+
+.contact-form .form-group { margin-bottom: 20px; }
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    outline: none;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #aaa; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary-light); }
+
+footer { background-color: #0b220d; color: #888; padding: 20px 0; font-size: 0.9rem; border-top: 1px solid #163d1a; }
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+    .nav-menu.active { display: flex; }
+    .nav-menu a { margin: 10px 0; text-align: center; }
+    .grid-4 { grid-template-columns: 1fr; }
+}
