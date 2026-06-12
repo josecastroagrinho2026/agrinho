@@ -1,0 +1,78 @@
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- MENU MOBILE ---
+    const mobileMenu = document.getElementById("mobile-menu");
+    const navMenu = document.querySelector(".nav-menu");
+
+    mobileMenu.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        const icon = mobileMenu.querySelector("i");
+        // Alterna entre o ícone de hambúrguer e fechar
+        if(navMenu.classList.contains("active")) {
+            icon.classList.replace("fa-bars", "fa-xmark");
+        } else {
+            icon.classList.replace("fa-xmark", "fa-bars");
+        }
+    });
+
+    // Fecha o menu ao clicar em qualquer link (Mobile)
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            mobileMenu.querySelector("i").classList.replace("fa-xmark", "fa-bars");
+        });
+    });
+
+
+    // --- EFEITO CONTADOR (NÚMEROS ANIMADOS) ---
+    const counters = document.querySelectorAll('.counter');
+    const speed = 150; // Quanto menor, mais rápido
+
+    const runCounter = () => {
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = Math.ceil(target / speed);
+
+                if (count < target) {
+                    counter.innerText = count + inc;
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target.toLocaleString('pt-BR');
+                }
+            };
+            updateCount();
+        });
+    };
+
+    // Ativa o contador apenas quando o usuário rolar até a seção
+    let started = false;
+    window.addEventListener('scroll', () => {
+        const projetosSection = document.getElementById('projetos');
+        const sectionPos = projetosSection.getBoundingClientRect().top;
+        const screenPos = window.innerHeight / 1.2;
+
+        if (sectionPos < screenPos && !started) {
+            runCounter();
+            started = true;
+        }
+    });
+
+
+    // --- VALIDAÇÃO DE FORMULÁRIO DE CONTATO ---
+    const contactForm = document.getElementById("contact-form");
+
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // Impede o recarregamento da página
+        
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        
+        // Simulação de envio corporativo de sucesso
+        if (name && email) {
+            alert(`Obrigado pelo contato, ${name}! Sua mensagem sobre o Agrinho 2026 foi enviada com sucesso à nossa central.`);
+            contactForm.reset();
+        }
+    });
+});
